@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "4fc517cb25a04c1e81c5",
+  "position": {
+    "x": 1280,
+    "y": 820,
+    "z": 0,
+    "width": 620,
+    "height": 240,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "OpenStreetMap recense environ 22 000 DAB, contre environ 40 000 en réalité : la carte montre la couverture connue, pas l'exhaustivité. Les chiffres officiels de la Banque de France donnent l'ordre de grandeur réel.",
+                    "textStyle": {
+                      "fontSize": "11pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

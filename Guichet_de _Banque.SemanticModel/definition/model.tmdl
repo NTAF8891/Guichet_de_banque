@@ -7,9 +7,16 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation __PBI_TimeIntelligenceEnabled = 1
+annotation PBI_QueryOrder = ["DossierDonnees", "communes", "departements", "dab_osm", "references_bdf"]
+
+annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_ProTooling = ["DevMode"]
 
-ref cultureInfo fr-FR
+ref table communes
+ref table departements
+ref table dab_osm
+ref table references_bdf
+ref table 'Seuil désert (km)'
 
+ref cultureInfo fr-FR

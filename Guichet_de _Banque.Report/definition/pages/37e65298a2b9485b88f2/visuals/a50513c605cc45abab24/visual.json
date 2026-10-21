@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "a50513c605cc45abab24",
+  "position": {
+    "x": 1340,
+    "y": 195,
+    "z": 0,
+    "width": 560,
+    "height": 400,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "donutChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "communes"
+                    }
+                  },
+                  "Property": "acces_agence"
+                }
+              },
+              "queryRef": "communes.acces_agence",
+              "nativeQueryRef": "acces_agence"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "communes"
+                    }
+                  },
+                  "Property": "Population"
+                }
+              },
+              "queryRef": "communes.Population",
+              "nativeQueryRef": "Population"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Population selon la distance à une agence'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

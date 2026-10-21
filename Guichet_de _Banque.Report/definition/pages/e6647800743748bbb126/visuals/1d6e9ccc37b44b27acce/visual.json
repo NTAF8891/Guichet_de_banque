@@ -1,0 +1,95 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "1d6e9ccc37b44b27acce",
+  "position": {
+    "x": 1140,
+    "y": 245,
+    "z": 0,
+    "width": 760,
+    "height": 815,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "departements"
+                    }
+                  },
+                  "Property": "nom_departement"
+                }
+              },
+              "queryRef": "departements.nom_departement",
+              "nativeQueryRef": "nom_departement"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "communes"
+                    }
+                  },
+                  "Property": "Part population en désert"
+                }
+              },
+              "queryRef": "communes.Part population en désert",
+              "nativeQueryRef": "Part population en désert"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "communes"
+                  }
+                },
+                "Property": "Part population en désert"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Départements les plus touchés'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

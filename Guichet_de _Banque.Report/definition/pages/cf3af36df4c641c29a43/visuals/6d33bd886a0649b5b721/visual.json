@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "6d33bd886a0649b5b721",
+  "position": {
+    "x": 980,
+    "y": 860,
+    "z": 0,
+    "width": 920,
+    "height": 200,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Prudence : l'INSEE diffuse le code « Banque, caisse d'épargne » avec réserve et déconseille les comptages en évolution aux échelons fins. Certaines hausses départementales reflètent des changements d'enregistrement plutôt que de vraies ouvertures.",
+                    "textStyle": {
+                      "fontSize": "11pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

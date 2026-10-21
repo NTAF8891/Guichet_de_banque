@@ -1,0 +1,196 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "34582d35f2f34376b82c",
+  "position": {
+    "x": 20,
+    "y": 195,
+    "z": 0,
+    "width": 1300,
+    "height": 865,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "azureMap",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "communes"
+                    }
+                  },
+                  "Property": "nom_commune"
+                }
+              },
+              "queryRef": "communes.nom_commune",
+              "nativeQueryRef": "nom_commune"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "communes"
+                    }
+                  },
+                  "Property": "lat"
+                }
+              },
+              "queryRef": "communes.lat",
+              "nativeQueryRef": "lat"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "communes"
+                    }
+                  },
+                  "Property": "lon"
+                }
+              },
+              "queryRef": "communes.lon",
+              "nativeQueryRef": "lon"
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "communes"
+                    }
+                  },
+                  "Property": "Population"
+                }
+              },
+              "queryRef": "communes.Population",
+              "nativeQueryRef": "Population"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "communes"
+                    }
+                  },
+                  "Property": "acces_agence"
+                }
+              },
+              "queryRef": "communes.acces_agence",
+              "nativeQueryRef": "acces_agence"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Communes à plus de 5 km d'une agence (taille = population)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "a22d5249c2df431890a8",
+        "type": "Categorical",
+        "howCreated": "User",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "communes"
+              }
+            },
+            "Property": "acces_agence"
+          }
+        },
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "t",
+              "Entity": "communes",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "t"
+                          }
+                        },
+                        "Property": "acces_agence"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'3 - Agence entre 5 et 10 km'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'4 - Désert bancaire (plus de 10 km)'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

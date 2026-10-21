@@ -1,0 +1,270 @@
+table communes
+	lineageTag: 4c6786cc-c65f-4fc1-968d-c39288dd41f0
+
+	measure Population = SUM ( communes[population_2023] )
+		formatString: #,0
+		lineageTag: fb116c2e-a783-43c5-b079-6ab1f1644c3f
+
+	measure Communes = COUNTROWS ( communes )
+		formatString: #,0
+		lineageTag: c29c064f-1e51-4513-aa01-eba0f5ab9552
+
+	measure Agences = SUM ( communes[agences_bancaires_2025] )
+		formatString: #,0
+		lineageTag: 92d92b9c-7326-4aa1-9a0a-c3703557087f
+
+	measure 'Agences pour 10 000 hab' = DIVIDE ( [Agences], [Population] ) * 10000
+		formatString: 0.00
+		lineageTag: 3478c738-b590-457d-95e5-cf3eea3c556d
+
+	measure 'DAB (OSM)' = SUM ( communes[dab_osm] )
+		formatString: #,0
+		lineageTag: 321f76c7-e728-466d-8468-d04f137a2db6
+
+	measure 'Communes sans agence' = CALCULATE ( [Communes], communes[agences_bancaires_2025] = 0 )
+		formatString: #,0
+		lineageTag: 04bdfd22-66e7-4596-9f99-223abaa975f5
+
+	measure 'Part communes sans agence' = DIVIDE ( [Communes sans agence], [Communes] )
+		formatString: 0.0 %
+		lineageTag: 98fb81cd-07b9-4a57-8f87-f731910fed68
+
+	measure 'Population en désert bancaire' =
+			VAR seuil = [Seuil désert (km) Valeur]
+			RETURN
+			    CALCULATE ( [Population], communes[distance_agence_km] >= seuil )
+		formatString: #,0
+		lineageTag: edab5b1c-00d8-4c5a-bd27-c50c68f9e47d
+
+	measure 'Communes en désert bancaire' =
+			VAR seuil = [Seuil désert (km) Valeur]
+			RETURN
+			    CALCULATE ( [Communes], communes[distance_agence_km] >= seuil )
+		formatString: #,0
+		lineageTag: ca4d18d3-6e18-4d9b-bc24-4fea46886093
+
+	measure 'Part population en désert' = DIVIDE ( [Population en désert bancaire], [Population] )
+		formatString: 0.0 %
+		lineageTag: dd613e6d-f2d1-4fbf-b555-72d12786b4c9
+
+	measure 'Communes ayant perdu leur agence' = SUM ( communes[a_perdu_agence_2020_2025] )
+		formatString: #,0
+		lineageTag: 27de1175-dc5f-4aa7-a93e-ed1a5f732103
+
+	measure 'Communes sans agence ni DAB' = SUM ( communes[sans_agence_ni_dab] )
+		formatString: #,0
+		lineageTag: 511145ea-403a-4728-8d74-065144e309d7
+
+	measure 'Distance moyenne à une agence (km)' =
+			DIVIDE (
+			    SUMX ( communes, communes[distance_agence_km] * communes[population_2023] ),
+			    [Population]
+			)
+		formatString: 0.0
+		lineageTag: e1b25665-abde-4a4a-9fd2-8ef3eb5bd794
+
+	column code_commune
+		dataType: string
+		lineageTag: 619938cf-96b2-4e4b-ab6e-4d6196d632c7
+		summarizeBy: none
+		sourceColumn: code_commune
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom_commune
+		dataType: string
+		lineageTag: f533ce33-1454-4dac-8745-437ab5634766
+		summarizeBy: none
+		sourceColumn: nom_commune
+
+		annotation SummarizationSetBy = Automatic
+
+	column code_departement
+		dataType: string
+		lineageTag: ececfa5e-95fb-4aec-9648-5496a38c56d8
+		summarizeBy: none
+		sourceColumn: code_departement
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom_departement
+		dataType: string
+		lineageTag: de611f6c-6a98-40f3-9837-51a8ff8ff105
+		summarizeBy: none
+		sourceColumn: nom_departement
+
+		annotation SummarizationSetBy = Automatic
+
+	column code_region
+		dataType: string
+		lineageTag: 66226d93-f013-45e1-b419-6c7639229ab1
+		summarizeBy: none
+		sourceColumn: code_region
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom_region
+		dataType: string
+		lineageTag: fb86a330-940f-4aa0-987f-03cefa64a801
+		summarizeBy: none
+		sourceColumn: nom_region
+
+		annotation SummarizationSetBy = Automatic
+
+	column population_2023
+		dataType: double
+		lineageTag: 32bafca1-38a0-4432-8bf3-4b57127b107e
+		summarizeBy: sum
+		sourceColumn: population_2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column lat
+		dataType: double
+		dataCategory: Latitude
+		lineageTag: d9328dda-ed01-4680-8be3-b26cc9b31d9c
+		summarizeBy: none
+		sourceColumn: lat
+
+		annotation SummarizationSetBy = Automatic
+
+	column lon
+		dataType: double
+		dataCategory: Longitude
+		lineageTag: fc00764a-7715-4085-898d-8365bedfe632
+		summarizeBy: none
+		sourceColumn: lon
+
+		annotation SummarizationSetBy = Automatic
+
+	column agences_bancaires_2025
+		dataType: int64
+		lineageTag: b7690137-7025-45ac-aad2-7af6f702c854
+		summarizeBy: sum
+		sourceColumn: agences_bancaires_2025
+
+		annotation SummarizationSetBy = Automatic
+
+	column agence_presente_2020
+		dataType: int64
+		lineageTag: 2a5cf10d-b32d-4e96-b717-7015fed8c099
+		summarizeBy: sum
+		sourceColumn: agence_presente_2020
+
+		annotation SummarizationSetBy = Automatic
+
+	column agence_presente_2025
+		dataType: int64
+		lineageTag: 3aa77bb8-a845-4ab5-a6cb-e7d4046d50f9
+		summarizeBy: sum
+		sourceColumn: agence_presente_2025
+
+		annotation SummarizationSetBy = Automatic
+
+	column a_perdu_agence_2020_2025
+		dataType: int64
+		lineageTag: 7d8af4ca-40b0-401b-a24b-f1eb77dcfc42
+		summarizeBy: sum
+		sourceColumn: a_perdu_agence_2020_2025
+
+		annotation SummarizationSetBy = Automatic
+
+	column a_gagne_agence_2020_2025
+		dataType: int64
+		lineageTag: e4f7cf55-d808-49af-a56c-b4eaea857d92
+		summarizeBy: sum
+		sourceColumn: a_gagne_agence_2020_2025
+
+		annotation SummarizationSetBy = Automatic
+
+	column bureaux_poste_2025
+		dataType: int64
+		lineageTag: 1355bb6c-e3cb-4142-b9b4-82a92168d027
+		summarizeBy: sum
+		sourceColumn: bureaux_poste_2025
+
+		annotation SummarizationSetBy = Automatic
+
+	column relais_poste_2025
+		dataType: int64
+		lineageTag: 5470e2bc-f217-4b73-8553-e9216859ed64
+		summarizeBy: sum
+		sourceColumn: relais_poste_2025
+
+		annotation SummarizationSetBy = Automatic
+
+	column agences_postales_2025
+		dataType: int64
+		lineageTag: 5fda2234-3168-4093-b657-ac8c195a572f
+		summarizeBy: sum
+		sourceColumn: agences_postales_2025
+
+		annotation SummarizationSetBy = Automatic
+
+	column points_postaux_2025
+		dataType: int64
+		lineageTag: ba3fa85e-877d-446b-bb14-125c8c99863a
+		summarizeBy: sum
+		sourceColumn: points_postaux_2025
+
+		annotation SummarizationSetBy = Automatic
+
+	column dab_osm
+		dataType: int64
+		lineageTag: b15f9637-1392-43b8-a033-0a53868ec9a7
+		summarizeBy: sum
+		sourceColumn: dab_osm
+
+		annotation SummarizationSetBy = Automatic
+
+	column distance_agence_km
+		dataType: double
+		lineageTag: de937f2d-5e93-4aee-a349-9e00589976ec
+		summarizeBy: none
+		sourceColumn: distance_agence_km
+
+		annotation SummarizationSetBy = Automatic
+
+	column distance_dab_km
+		dataType: double
+		lineageTag: 15b9df6a-54d2-4773-b1f2-bb461c10bd40
+		summarizeBy: none
+		sourceColumn: distance_dab_km
+
+		annotation SummarizationSetBy = Automatic
+
+	column acces_agence
+		dataType: string
+		lineageTag: 18fbcc5d-76b9-4dc6-b1fb-6a570e17bf91
+		summarizeBy: none
+		sourceColumn: acces_agence
+
+		annotation SummarizationSetBy = Automatic
+
+	column desert_bancaire
+		dataType: int64
+		lineageTag: e76ddef6-365f-4013-a619-61c81370ca94
+		summarizeBy: sum
+		sourceColumn: desert_bancaire
+
+		annotation SummarizationSetBy = Automatic
+
+	column sans_agence_ni_dab
+		dataType: int64
+		lineageTag: f9b5e587-6e2a-4ac8-8286-d573fbdb2dca
+		summarizeBy: sum
+		sourceColumn: sans_agence_ni_dab
+
+		annotation SummarizationSetBy = Automatic
+
+	partition communes = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "communes.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"code_commune", type text}, {"nom_commune", type text}, {"code_departement", type text}, {"nom_departement", type text}, {"code_region", type text}, {"nom_region", type text}, {"population_2023", type number}, {"lat", type number}, {"lon", type number}, {"agences_bancaires_2025", Int64.Type}, {"agence_presente_2020", Int64.Type}, {"agence_presente_2025", Int64.Type}, {"a_perdu_agence_2020_2025", Int64.Type}, {"a_gagne_agence_2020_2025", Int64.Type}, {"bureaux_poste_2025", Int64.Type}, {"relais_poste_2025", Int64.Type}, {"agences_postales_2025", Int64.Type}, {"points_postaux_2025", Int64.Type}, {"dab_osm", Int64.Type}, {"distance_agence_km", type number}, {"distance_dab_km", type number}, {"acces_agence", type text}, {"desert_bancaire", Int64.Type}, {"sans_agence_ni_dab", Int64.Type}}, "en-US")
+				in
+				    Types
+
+	annotation PBI_ResultType = Table

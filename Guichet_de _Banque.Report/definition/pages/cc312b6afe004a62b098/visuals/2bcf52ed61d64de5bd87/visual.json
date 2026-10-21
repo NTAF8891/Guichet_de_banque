@@ -1,0 +1,92 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "2bcf52ed61d64de5bd87",
+  "position": {
+    "x": 1280,
+    "y": 245,
+    "z": 0,
+    "width": 620,
+    "height": 560,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "references_bdf"
+                    }
+                  },
+                  "Property": "indicateur"
+                }
+              },
+              "queryRef": "references_bdf.indicateur",
+              "nativeQueryRef": "indicateur"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "references_bdf"
+                        }
+                      },
+                      "Property": "valeur"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(references_bdf.valeur)",
+              "nativeQueryRef": "Somme de valeur"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "references_bdf"
+                    }
+                  },
+                  "Property": "unite"
+                }
+              },
+              "queryRef": "references_bdf.unite",
+              "nativeQueryRef": "unite"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Repères officiels Banque de France (fin 2025)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

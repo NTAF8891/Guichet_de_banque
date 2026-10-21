@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "d06617bad0e644969ba1",
+  "position": {
+    "x": 340,
+    "y": 95,
+    "z": 0,
+    "width": 300,
+    "height": 130,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "communes"
+                    }
+                  },
+                  "Property": "Communes sans agence ni DAB"
+                }
+              },
+              "queryRef": "communes.Communes sans agence ni DAB",
+              "nativeQueryRef": "Communes sans agence ni DAB"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Communes sans agence ni DAB'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

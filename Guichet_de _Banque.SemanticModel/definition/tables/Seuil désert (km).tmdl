@@ -1,0 +1,25 @@
+table 'Seuil désert (km)'
+	lineageTag: ca1bcab1-d642-48d7-94d2-1dd091169b9f
+
+	measure 'Seuil désert (km) Valeur' = SELECTEDVALUE ( 'Seuil désert (km)'[Seuil désert (km)], 10 )
+		formatString: 0
+		lineageTag: e7a0ca91-6676-4455-8e3c-4e0a1e0969f7
+
+	column 'Seuil désert (km)'
+		formatString: 0
+		lineageTag: 0c3d1f83-ccf4-4b9b-b87c-51617000408e
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition 'Seuil désert (km)' = calculated
+		mode: import
+		source = GENERATESERIES ( 3, 20, 1 )
+
+	annotation PBI_Id = 9c523d299975409489c03aa370e1d9f1

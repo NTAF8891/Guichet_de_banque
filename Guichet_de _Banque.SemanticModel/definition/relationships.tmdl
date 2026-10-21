@@ -1,0 +1,7 @@
+relationship 9c7bfbd5-c00f-4861-a3b5-daba0a06dcac
+	fromColumn: communes.code_departement
+	toColumn: departements.code_departement
+
+relationship a19e67a3-4477-4bb8-9ab6-f444f9d22539
+	fromColumn: dab_osm.code_commune
+	toColumn: communes.code_commune

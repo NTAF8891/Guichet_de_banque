@@ -1,0 +1,182 @@
+table departements
+	lineageTag: 29b0cf8e-4d1d-4d5e-9c73-855381e1db8c
+
+	column code_departement
+		dataType: string
+		lineageTag: 2ac98b8a-767f-4e8c-bfb3-c6d47da7772f
+		summarizeBy: none
+		sourceColumn: code_departement
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom_departement
+		dataType: string
+		lineageTag: 35d4093d-62e5-43c6-ab3c-0dd0da021cae
+		summarizeBy: none
+		sourceColumn: nom_departement
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom_region
+		dataType: string
+		lineageTag: 82040a95-3583-447a-90ef-1a1a0392e9ee
+		summarizeBy: none
+		sourceColumn: nom_region
+
+		annotation SummarizationSetBy = Automatic
+
+	column population_2023
+		dataType: double
+		lineageTag: bdf4f8ee-5017-4b1d-ae8b-4e6e57195117
+		summarizeBy: sum
+		sourceColumn: population_2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_communes
+		dataType: int64
+		lineageTag: 39530e15-e2e7-46b0-b6f1-e1d459aa92d1
+		summarizeBy: sum
+		sourceColumn: nb_communes
+
+		annotation SummarizationSetBy = Automatic
+
+	column agences_bancaires_2025
+		dataType: int64
+		lineageTag: 8d8493f0-6b31-4d25-90d1-c6bd747e2c83
+		summarizeBy: sum
+		sourceColumn: agences_bancaires_2025
+
+		annotation SummarizationSetBy = Automatic
+
+	column dab_osm
+		dataType: int64
+		lineageTag: ae17d6ac-2e31-4b7a-a2e8-5d2e907f7ca0
+		summarizeBy: sum
+		sourceColumn: dab_osm
+
+		annotation SummarizationSetBy = Automatic
+
+	column points_postaux_2025
+		dataType: int64
+		lineageTag: 149d1338-9d13-4914-822e-befdaab86ad9
+		summarizeBy: sum
+		sourceColumn: points_postaux_2025
+
+		annotation SummarizationSetBy = Automatic
+
+	column communes_sans_agence
+		dataType: int64
+		lineageTag: 0664710e-13cf-425a-9460-e339b887bae0
+		summarizeBy: sum
+		sourceColumn: communes_sans_agence
+
+		annotation SummarizationSetBy = Automatic
+
+	column communes_desert_bancaire
+		dataType: int64
+		lineageTag: a96b1d4c-4b28-43b4-b378-56923cd1a545
+		summarizeBy: sum
+		sourceColumn: communes_desert_bancaire
+
+		annotation SummarizationSetBy = Automatic
+
+	column communes_ayant_perdu_agence
+		dataType: int64
+		lineageTag: b410cb3d-0367-4f87-b890-88a26e3a5eb2
+		summarizeBy: sum
+		sourceColumn: communes_ayant_perdu_agence
+
+		annotation SummarizationSetBy = Automatic
+
+	column population_sans_agence_commune
+		dataType: double
+		lineageTag: 2c8fa989-0bee-4d1a-83be-d8000b9c38de
+		summarizeBy: sum
+		sourceColumn: population_sans_agence_commune
+
+		annotation SummarizationSetBy = Automatic
+
+	column population_desert_bancaire
+		dataType: double
+		lineageTag: b1988a08-a08b-4bd2-a18f-5c03dfd38f30
+		summarizeBy: sum
+		sourceColumn: population_desert_bancaire
+
+		annotation SummarizationSetBy = Automatic
+
+	column agences_bancaires_2020_insee
+		dataType: double
+		lineageTag: 4c467ee5-cb1e-4ab3-9c01-7043b5ad2bf9
+		summarizeBy: sum
+		sourceColumn: agences_bancaires_2020_insee
+
+		annotation SummarizationSetBy = Automatic
+
+	column agences_bancaires_2025_insee
+		dataType: double
+		lineageTag: 0857e471-4b78-4cb1-b133-e72ab9bdd403
+		summarizeBy: sum
+		sourceColumn: agences_bancaires_2025_insee
+
+		annotation SummarizationSetBy = Automatic
+
+	column evolution_agences_2020_2025_pct
+		dataType: double
+		lineageTag: 0052f07e-ebf7-4329-9b4c-5de09f451b87
+		summarizeBy: none
+		sourceColumn: evolution_agences_2020_2025_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column agences_pour_10000_hab
+		dataType: double
+		lineageTag: 0441186b-5f28-43cd-a256-c468f6bb6ae4
+		summarizeBy: none
+		sourceColumn: agences_pour_10000_hab
+
+		annotation SummarizationSetBy = Automatic
+
+	column dab_osm_pour_10000_hab
+		dataType: double
+		lineageTag: 464cfc14-46e3-4087-984e-3166cf7cf4d5
+		summarizeBy: none
+		sourceColumn: dab_osm_pour_10000_hab
+
+		annotation SummarizationSetBy = Automatic
+
+	column part_pop_sans_agence_commune_pct
+		dataType: double
+		lineageTag: 610ab76d-83e1-4cff-bc15-3312b2965fa2
+		summarizeBy: none
+		sourceColumn: part_pop_sans_agence_commune_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column part_pop_desert_bancaire_pct
+		dataType: double
+		lineageTag: a4381abe-9815-4ed1-9097-09fb510752b5
+		summarizeBy: none
+		sourceColumn: part_pop_desert_bancaire_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column drom
+		dataType: int64
+		lineageTag: da8028b9-a391-47ab-878e-0d31d5dcd808
+		summarizeBy: none
+		sourceColumn: drom
+
+		annotation SummarizationSetBy = Automatic
+
+	partition departements = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "departements.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"code_departement", type text}, {"nom_departement", type text}, {"nom_region", type text}, {"population_2023", type number}, {"nb_communes", Int64.Type}, {"agences_bancaires_2025", Int64.Type}, {"dab_osm", Int64.Type}, {"points_postaux_2025", Int64.Type}, {"communes_sans_agence", Int64.Type}, {"communes_desert_bancaire", Int64.Type}, {"communes_ayant_perdu_agence", Int64.Type}, {"population_sans_agence_commune", type number}, {"population_desert_bancaire", type number}, {"agences_bancaires_2020_insee", type number}, {"agences_bancaires_2025_insee", type number}, {"evolution_agences_2020_2025_pct", type number}, {"agences_pour_10000_hab", type number}, {"dab_osm_pour_10000_hab", type number}, {"part_pop_sans_agence_commune_pct", type number}, {"part_pop_desert_bancaire_pct", type number}, {"drom", Int64.Type}}, "en-US")
+				in
+				    Types
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "0d3bc98d1da14d2caa11",
+  "position": {
+    "x": 1300,
+    "y": 95,
+    "z": 0,
+    "width": 300,
+    "height": 130,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "communes"
+                    }
+                  },
+                  "Property": "Communes ayant perdu leur agence"
+                }
+              },
+              "queryRef": "communes.Communes ayant perdu leur agence",
+              "nativeQueryRef": "Communes ayant perdu leur agence"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Communes ayant perdu leur agence (2020-2025)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

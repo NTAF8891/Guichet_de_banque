@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "5cca9356f03f43f0a754",
+  "position": {
+    "x": 20,
+    "y": 245,
+    "z": 0,
+    "width": 1100,
+    "height": 815,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "shapeMap",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "departements"
+                    }
+                  },
+                  "Property": "code_departement"
+                }
+              },
+              "queryRef": "departements.code_departement",
+              "nativeQueryRef": "code_departement"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "communes"
+                    }
+                  },
+                  "Property": "Part population en désert"
+                }
+              },
+              "queryRef": "communes.Part population en désert",
+              "nativeQueryRef": "Part population en désert"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Part de la population à plus du seuil d'une agence, par département'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

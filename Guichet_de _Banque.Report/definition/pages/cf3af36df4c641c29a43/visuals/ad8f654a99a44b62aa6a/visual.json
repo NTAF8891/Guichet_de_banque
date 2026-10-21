@@ -1,0 +1,105 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "ad8f654a99a44b62aa6a",
+  "position": {
+    "x": 20,
+    "y": 245,
+    "z": 0,
+    "width": 940,
+    "height": 815,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "departements"
+                    }
+                  },
+                  "Property": "nom_departement"
+                }
+              },
+              "queryRef": "departements.nom_departement",
+              "nativeQueryRef": "nom_departement"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "departements"
+                        }
+                      },
+                      "Property": "evolution_agences_2020_2025_pct"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(departements.evolution_agences_2020_2025_pct)",
+              "nativeQueryRef": "Somme de evolution_agences_2020_2025_pct"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "departements"
+                      }
+                    },
+                    "Property": "evolution_agences_2020_2025_pct"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Évolution du nombre d'agences 2020-2025 (%, INSEE)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "cbec7440623548858515",
+  "position": {
+    "x": 20,
+    "y": 245,
+    "z": 0,
+    "width": 1240,
+    "height": 815,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "azureMap",
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dab_osm"
+                    }
+                  },
+                  "Property": "lat"
+                }
+              },
+              "queryRef": "dab_osm.lat",
+              "nativeQueryRef": "lat"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dab_osm"
+                    }
+                  },
+                  "Property": "lon"
+                }
+              },
+              "queryRef": "dab_osm.lon",
+              "nativeQueryRef": "lon"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dab_osm"
+                    }
+                  },
+                  "Property": "type_osm"
+                }
+              },
+              "queryRef": "dab_osm.type_osm",
+              "nativeQueryRef": "type_osm"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Distributeurs automatiques de billets'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

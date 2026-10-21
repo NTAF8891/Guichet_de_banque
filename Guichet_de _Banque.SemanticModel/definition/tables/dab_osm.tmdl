@@ -1,0 +1,64 @@
+table dab_osm
+	lineageTag: 47f8ea7f-1751-4aa8-9089-a850724c99a2
+
+	column id_osm
+		dataType: int64
+		lineageTag: 23e05246-420d-4475-a386-26dfc627561c
+		summarizeBy: none
+		sourceColumn: id_osm
+
+		annotation SummarizationSetBy = Automatic
+
+	column lat
+		dataType: double
+		dataCategory: Latitude
+		lineageTag: be0f75d5-dbfd-4591-9c3f-28d9e31128ef
+		summarizeBy: none
+		sourceColumn: lat
+
+		annotation SummarizationSetBy = Automatic
+
+	column lon
+		dataType: double
+		dataCategory: Longitude
+		lineageTag: eb627e8a-20f9-431c-9071-00ac94279ce0
+		summarizeBy: none
+		sourceColumn: lon
+
+		annotation SummarizationSetBy = Automatic
+
+	column type_osm
+		dataType: string
+		lineageTag: dc1f124e-1002-4585-bb97-953de680269d
+		summarizeBy: none
+		sourceColumn: type_osm
+
+		annotation SummarizationSetBy = Automatic
+
+	column enseigne
+		dataType: string
+		lineageTag: 67362ba0-c530-4d9e-969b-0e682d05e020
+		summarizeBy: none
+		sourceColumn: enseigne
+
+		annotation SummarizationSetBy = Automatic
+
+	column code_commune
+		dataType: string
+		lineageTag: 69bf42d4-d016-45c2-ad89-af66a8527f85
+		summarizeBy: none
+		sourceColumn: code_commune
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dab_osm = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "dab_osm.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"id_osm", Int64.Type}, {"lat", type number}, {"lon", type number}, {"type_osm", type text}, {"enseigne", type text}, {"code_commune", type text}}, "en-US")
+				in
+				    Types
+
+	annotation PBI_ResultType = Table

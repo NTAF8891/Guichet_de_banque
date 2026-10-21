@@ -1,0 +1,4 @@
+expression DossierDonnees = "C:\Users\atanguen\OneDrive - Shipco Transport\Desktop\PROJET SSC et memoire fin d'annee\projet pour linkedn\2-Banque (Banque de France)\donnees_powerbi\" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: 9caa0532-1d0d-4e9f-8554-19fd076f19a1
+
+	annotation PBI_ResultType = Text

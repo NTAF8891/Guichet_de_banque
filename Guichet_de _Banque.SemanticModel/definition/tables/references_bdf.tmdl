@@ -1,0 +1,54 @@
+table references_bdf
+	lineageTag: 80615168-5e07-4ada-8164-b8fd3cf9a55f
+
+	column indicateur
+		dataType: string
+		lineageTag: bf891c4a-bfb0-41ca-b1a6-6e3df52eecaf
+		summarizeBy: none
+		sourceColumn: indicateur
+
+		annotation SummarizationSetBy = Automatic
+
+	column valeur
+		dataType: double
+		lineageTag: 642a75d8-d6cc-4b44-a810-3057ddab03b0
+		summarizeBy: none
+		sourceColumn: valeur
+
+		annotation SummarizationSetBy = Automatic
+
+	column unite
+		dataType: string
+		lineageTag: 4c379a12-3ecd-4b20-8c06-4e339cebaee4
+		summarizeBy: none
+		sourceColumn: unite
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 1f9e5475-18a6-44c7-9c63-97ddd7771f5e
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column url
+		dataType: string
+		lineageTag: 6bc3bcb3-f9d1-4377-89df-c11e4d7c9354
+		summarizeBy: none
+		sourceColumn: url
+
+		annotation SummarizationSetBy = Automatic
+
+	partition references_bdf = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "references_banque_de_france.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"indicateur", type text}, {"valeur", type number}, {"unite", type text}, {"source", type text}, {"url", type text}}, "en-US")
+				in
+				    Types
+
+	annotation PBI_ResultType = Table
