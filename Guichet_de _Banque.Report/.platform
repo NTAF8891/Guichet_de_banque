@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Guichet_de _Banque"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f1a8a19c-289e-4d40-b9cc-8d4dde19be70"
+  }
+}

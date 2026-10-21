@@ -1,0 +1,10 @@
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+# Téléchargements temporaires et doublons
+*.crdownload
+* (1).zip
+
+# Cache des API (régénéré par scripts/preparer_donnees.py)
+donnees_brutes/
+__pycache__/
+~$*
